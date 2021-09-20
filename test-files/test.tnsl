@@ -1,10 +1,15 @@
-:import 'tnsl'
+:include 'tnsl'
 :using 'tnsl'
 
+/:include
+	"this"
+	'that'
+:/
+
 /; if (int i = 0; i < 1)
-	;tnsl.load.file("file_to_open.tnsl")
+	;file.open("file_to_open.tnsl")
 ;; else
-	;tnsl.close.file("file_to_close.tnsl")
+	;file_pointer.close()
 ;/
 
 ;{}charp s = "\uffffff"

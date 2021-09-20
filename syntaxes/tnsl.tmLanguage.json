@@ -12,6 +12,9 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#metas"
+		},
+		{
 			"include": "#operators"
 		}
 	],
@@ -119,6 +122,25 @@
 			},{
 				"name": "constant.language.tnsl",
 				"match": "\\b(true|false)\\b"
+			}]
+		},
+		"metawords":{
+			"patterns": [{
+				"name": "meta.preprocessor.keyword.tnsl",
+				"match": "\\b(include|using)\\b"
+			}]
+		},
+		"metas": {
+			"patterns": [{
+				"name": "meta.preprocessor.block.tnsl",
+				"begin": "\\/:",
+				"end": ":\\/",
+				"patterns": [{"include": "#metawords"}, {"include": "#constants"}]
+			},{
+				"name": "meta.preprocessor.line.tnsl",
+				"begin": "^\\:",
+				"end": "$",
+				"patterns": [{"include": "#metawords"}, {"include": "#constants"}]
 			}]
 		}
 	},
