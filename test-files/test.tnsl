@@ -1,0 +1,33 @@
+:import 'tnsl'
+:using 'tnsl'
+
+/; if (int i = 0; i < 1)
+	;tnsl.load.file("file_to_open.tnsl")
+;; else
+	;tnsl.close.file("file_to_close.tnsl")
+;/
+
+;{}charp s = "\uffffff"
+
+;string str = string.from_un71(s)
+2.0
+.20
+..0.0..
+
+/; some_looping_func (int i, j) [int]
+	/; loop (i > 0) [i--]
+		/; if (i % j == 0)
+			;break
+		;/
+	;/
+	;return i
+;/
+
+# Comments
+/# Block comments
+#/
+/## Doc comments
+	{@code Style the documentation!}
+#; back_to_this [~void(int, int)[int]]
+	;return ~some_looping_func
+;/

@@ -1,0 +1,25 @@
+{
+    "name": "tnsl-lang",
+    "displayName": "tnsl-lang",
+    "description": "Syntax highlighting and folding support for the TNSL programming language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.59.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "tnsl",
+            "aliases": ["TNSL", "tnsl"],
+            "extensions": [".tnsl"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "tnsl",
+            "scopeName": "source.tnsl",
+            "path": "./syntaxes/tnsl.tmLanguage.json"
+        }]
+    }
+}

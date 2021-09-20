@@ -1,0 +1,126 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "TNSL",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#operators"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.documentation.tnsl",
+					"begin": "\\/##",
+					"end": "#\\/|#(?=;)",
+					"beginCaptures": {
+						"0": { "name": "comment.block.documentation.open.tnsl" }
+					},
+					"endCaptures": {
+						"0": { "name": "comment.block.documentation.close.tnsl" }
+					},
+					"patterns": [{"include": "#docex"}]
+				},{
+					"name":"comment.block.tnsl",
+					"begin": "\\/#",
+					"end": "#\\/|#(?=;)",
+					"beginCaptures": {
+						"0": { "name": "comment.block.open.tnsl" }
+					},
+					"endCaptures": {
+						"0": { "name": "comment.block.close.tnsl" }
+					}
+				},{
+					"name": "comment.line.tnsl",
+					"match": "#.*$"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.tnsl",
+				"match": "\\b(if|else|loop|match|case|default|goto|label|continue|break|return)\\b"
+			},{
+				"name": "keyword.type.tnsl",
+				"match": "\\b(struct|extends)\\b"
+			},{
+				"name": "keyword.modifier.tnsl",
+				"match": "\\b(const|volatile|static|raw)\\b"
+			},{
+				"name": "keyword.modifier.block.tnsl",
+				"match": "\\b(interface|enum|method|inline|override|operator|module|export)\\b"
+			},{
+				"name": "keyword.memory.tnsl",
+				"match": "\\b(delete|alloc|salloc|realloc)\\b"
+			},{
+				"name": "storage.type.tnsl",
+				"match": "\\b(bool|char|charp|u?int(8|16|32|64|)|float(32|64|)|void|type|vect)\\b"
+			}]
+		},
+		"operators": {
+			"patterns": [{
+				"name":"operator.multi.tnsl",
+				"match": "(?:\\=|\\&|\\||\\^|\\+|\\-|\\*|\\/|\\%|\\~|\\`|\\>\\=|\\<\\=)=|!(?:\\=\\=|\\=|\\&\\&|\\|\\||\\&|\\||\\>|\\<)|\\&\\&|\\|\\||\\<\\<|\\>\\>|\\+\\+|\\-\\-"
+			},{
+				"name":"operator.tnsl",
+				"match": "\\=|\\.|\\&|\\||\\^|\\>|\\<|\\!|\\+|\\-|\\*|\\/|\\%|\\~|\\`"
+			},{
+				"name": "keyword.operator.word.tnsl",
+				"match": "\\b(size|len|is|self|super)\\b"
+			}]
+		},
+		"stringex": {
+			"patterns": [
+				{
+					"name": "constant.character.escape.tnsl",
+					"match": "\\\\[^u]|\\\\u[0-9A-Fa-f]{1,6}"
+				}
+			]
+		},
+		"docex": {
+			"patterns": [
+				{
+					"name": "meta.doc.markup.tnsl",
+					"begin": "(?<!\\\\)\\{\\@[^\\s\\{\\}]*",
+					"end": "(?<!\\\\)\\}",
+					"beginCaptures": {
+						"0": { "name": "meta.doc.markup.open.tnsl" }
+					},
+					"endCaptures": {
+						"0": { "name": "meta.doc.markup.close.tnsl" }
+					},
+					"patterns": [{"include": "#docex"}]
+				}
+			]
+		},
+		"constants": {
+			"patterns": [{
+				"name": "string.quoted.single.tnsl",
+				"begin": "'",
+				"end": "'",
+				"patterns": [{"include": "#stringex"}]
+			},{
+				"name": "string.quoted.double.tnsl",
+				"begin": "\"",
+				"end": "\"",
+				"patterns": [{"include": "#stringex"}]
+			},{
+				"name": "constant.numeric.tnsl",
+				"match": "\\b(0b[10]+|0x[0-9A-Fa-f]+)\\b|(?<=[^\\w]|^)[0-9]*\\.?[0-9]+\\b"
+			},{
+				"name": "constant.language.tnsl",
+				"match": "\\b(true|false)\\b"
+			}]
+		}
+	},
+	"scopeName": "source.tnsl"
+}
