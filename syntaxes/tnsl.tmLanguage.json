@@ -67,6 +67,9 @@
 			},{
 				"name": "storage.type.tnsl",
 				"match": "\\b(bool|char|charp|u?int(8|16|32|64|)|float(32|64|)|void|type|vect)\\b"
+			},{
+				"name": "variable.language.type.tnsl",
+				"match": "\\b(self|super)\\b"
 			}]
 		},
 		"operators": {
@@ -78,7 +81,7 @@
 				"match": "\\=|\\.|\\&|\\||\\^|\\>|\\<|\\!|\\+|\\-|\\*|\\/|\\%|\\~|\\`"
 			},{
 				"name": "keyword.operator.word.tnsl",
-				"match": "\\b(size|len|is|self|super)\\b"
+				"match": "\\b(size|len|is)\\b"
 			}]
 		},
 		"stringex": {
